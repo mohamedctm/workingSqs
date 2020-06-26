@@ -15,7 +15,12 @@ import lombok.Getter;
 @Component
 public class SqsClient {
 
+	@Value("AKIAT7EBP5SOJKTENNZN")
+	private String AwsAccessKey;
 	
+	@Value("qMK7pHLrLWF2o7C2zcFiQvHJsYwhKEMemKZe01t0")
+	private String AwsSecretKey;
+
 	
 	@Value("${region}")
 	@Getter
