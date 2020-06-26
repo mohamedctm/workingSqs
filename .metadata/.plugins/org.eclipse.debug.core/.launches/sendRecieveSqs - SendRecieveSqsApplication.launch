@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.springframework.ide.eclipse.boot.launch">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/sendRecieveSqs/src/main/java/com/example/demo/SendRecieveSqsApplication.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<mapAttribute key="org.eclipse.debug.core.environmentVariables">
+<mapEntry key="AWS_ACCESS_KEY" value="AKIAT7EBP5SOPZ7O73UK"/>
+<mapEntry key="AWS_SECRET_ACCESS_KEY" value="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"/>
+<mapEntry key="access-key" value="AKIAT7EBP5SOPZ7O73UK"/>
+<mapEntry key="region" value="us-east-1"/>
+<mapEntry key="secret-key" value="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"/>
+<mapEntry key="url" value="https://sqs.us-east-1.amazonaws.com/273001999516/sqs"/>
+</mapAttribute>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.springframework.ide.eclipse.boot.launch.BootMavenClassPathProvider"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.example.demo.SendRecieveSqsApplication"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="sendRecieveSqs"/>
+<stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.springframework.ide.eclipse.boot.launch.BootMavenSourcePathProvider"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Djava.security.egd=file:/dev/./urandom"/>
+<stringAttribute key="process_factory_id" value="org.springframework.ide.eclipse.boot.launch.process.BootProcessFactory"/>
+<booleanAttribute key="spring.boot.ansi.console" value="true"/>
+<stringAttribute key="spring.boot.app.properties" value=""/>
+<booleanAttribute key="spring.boot.dash.hidden" value="false"/>
+<booleanAttribute key="spring.boot.debug.enable" value="false"/>
+<booleanAttribute key="spring.boot.fast.startup" value="true"/>
+<booleanAttribute key="spring.boot.jmx.enable" value="true"/>
+<booleanAttribute key="spring.boot.lifecycle.enable" value="true"/>
+<stringAttribute key="spring.boot.lifecycle.termination.timeout" value="15000"/>
+<booleanAttribute key="spring.boot.livebean.enable" value="false"/>
+<stringAttribute key="spring.boot.livebean.port" value="0"/>
+<stringAttribute key="spring.boot.profile" value=""/>
+</launchConfiguration>

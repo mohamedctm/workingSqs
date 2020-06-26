@@ -1,0 +1,43 @@
+package com.aws.sqs.service;
+
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import com.amazonaws.services.sqs.model.ReceiveMessageResult;
+import com.aws.sqs.client.SqsClient;
+
+@Component
+public class ReceiveMessage implements Runnable{
+	
+	private static final Logger LOG = LoggerFactory.getLogger(ReceiveMessage.class);
+	
+	private SqsClient client;
+	
+	public ReceiveMessage(SqsClient client) {
+		this.client = client;
+		
+	}
+	
+	@Override
+	@Scheduled(fixedRate = 1000)
+	public void run() {
+		LOG.info("starting");
+		ReceiveMessageResult result = client.getSqsClient()
+				.receiveMessage(client.getUrl());
+		LOG.info("start listening", result);
+		if(null != result)
+			client.getSqsClient().receiveMessage(client.getUrl());
+			LOG.info("Receive Message{}", result);
+		
+		if(null != result.getMessages() && !result.getMessages()
+				.isEmpty()) {
+			LOG.info("delete message", result.getMessages().get(0).getReceiptHandle());
+			client.getSqsClient().deleteMessage(client.getUrl(),
+					result.getMessages().get(0).getReceiptHandle());
+		}
+	}
+}

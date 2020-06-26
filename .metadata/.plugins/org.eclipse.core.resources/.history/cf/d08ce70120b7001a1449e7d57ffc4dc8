@@ -1,0 +1,73 @@
+package com.aws.sqs.service;
+
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.amazonaws.services.sqs.AmazonSQS;
+import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
+import com.amazonaws.services.sqs.model.CreateQueueResult;
+import com.amazonaws.services.sqs.model.GetQueueUrlResult;
+import com.amazonaws.services.sqs.model.ReceiveMessageResult;
+import com.aws.sqs.client.SqsClient;
+
+@Component
+@RestController
+public class ReceiveMessage{
+	
+	private static final Logger LOG = LoggerFactory.getLogger(ReceiveMessage.class);
+	
+	@Autowired
+	private SqsClient client;
+	
+	private AmazonSQS client2;
+	
+	public ReceiveMessage(SqsClient client) {
+		this.client = client;
+		
+	}
+//	@Override
+//	@Scheduled(fixedRate = 1000)
+//	public void run() {
+//		ReceiveMessageResult result = client.getSqsClient()
+//				.receiveMessage(client.getUrl());
+//		LOG.info("starting");
+//
+//		
+//		LOG.info("start listening", result);
+//		if(null == result)
+//			LOG.info("Receive Message{}", result);
+//		
+//		if(null != result.getMessages() && !result.getMessages()
+//				.isEmpty()) {
+//			LOG.info("delete message", result.getMessages().get(0).getReceiptHandle());
+//			client.getSqsClient().deleteMessage(client.getUrl(),
+//					result.getMessages().get(0).getReceiptHandle());
+//		}
+//	}
+//	@Override
+//	@Scheduled(fixedRate = 1000)
+	
+	public CreateQueueResult queueResult;
+	{
+		client2  = AmazonSQSClientBuilder.standard().withRegion("us-east-1").build();
+		
+	}
+	
+	@GetMapping("/recieve")
+	public String getMessage() {
+		return "something";
+		
+	}
+	
+	
+	
+	
+}

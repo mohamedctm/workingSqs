@@ -1,0 +1,13 @@
+server:
+  port: 8050  
+cloud:
+  aws:
+    region:
+      static: us-east-1
+    stack:
+      auto: false
+    credentials:
+      access-key: ${access-key}
+      secret-key: ${secret-key}
+    end-point:
+      uri:https:  https://sqs.us-east-1.amazonaws.com/273001999516/sqs-dl

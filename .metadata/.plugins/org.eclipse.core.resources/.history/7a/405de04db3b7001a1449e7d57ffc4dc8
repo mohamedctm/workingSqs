@@ -1,0 +1,57 @@
+package com.aws.sqs.service;
+
+import java.util.List;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.amazonaws.services.sqs.model.Message;
+import com.amazonaws.services.sqs.model.ReceiveMessageResult;
+import com.aws.sqs.client.SqsClient;
+
+@Component
+@RestController
+public class MessageSubscriberService {
+	
+	@Autowired
+	private  SqsClient client;
+
+	@Value("6")
+	private int pollingThreads;
+
+	@Value("1000")
+	private int pollingRate;
+
+	private ScheduledThreadPoolExecutor executor;
+
+	@GetMapping("/link")
+	public String message() {
+			
+			ReceiveMessageResult result = client.getAmazonSqsClient()
+					.receiveMessage(client.getUrl());
+//			if(null == result)
+			
+//			if(null != result.getMessages() && !result.getMessages()
+//					.isEmpty()) {
+//				client.getAmazonSqsClient().deleteMessage(client.getUrl(),
+//						result.getMessages().get(0).getReceiptHandle());
+//
+//		}
+		return result.getMessages().get(0).toString();
+	}
+//	@PostConstruct
+//	private void startSqsPoll() {
+//		executor = new ScheduledThreadPoolExecutor(pollingThreads);
+//		for(int worker = 0; worker < pollingThreads; worker++) {
+//			executor.scheduleAtFixedRate(new ReceiveMessage(client),
+//				0, pollingRate, TimeUnit.MILLISECONDS);
+//		}
+//	}
+}

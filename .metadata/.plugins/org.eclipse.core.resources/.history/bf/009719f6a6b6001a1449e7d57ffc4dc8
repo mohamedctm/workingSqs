@@ -1,0 +1,17 @@
+package com.aws.sqs.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.aws.sqs.client.SqsClient;
+
+@Component
+public class MessagePublisherService {
+
+	@Autowired
+	private SqsClient client;
+	
+	private void sendMessage() {
+		client.getSqsClient().sendMessage(client.getUrl,"hello");
+	}
+}

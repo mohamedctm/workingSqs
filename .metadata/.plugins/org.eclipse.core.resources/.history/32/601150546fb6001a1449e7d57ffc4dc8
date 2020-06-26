@@ -1,0 +1,17 @@
+### AWS ###
+cloud.aws.credentials.accessKey=AKIAT7EBP5SOPZ7O73UK
+cloud.aws.credentials.secretKey=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
+cloud.aws.region.static=us-east-1
+cloud.aws.stack.name=Spring-Sqs
+
+### Database ###
+spring.datasource.url=jdbc:reservoir.c0vqeod3dnhi.us-east-2.rds.amazonaws.com/reservoir
+spring.datasource.username=spring
+spring.datasource.password=wasspord
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+
+#  access-key: 
+ #     secret-key: 
+##    end-point:
+#      uri:  https://sqs.us-east-1.amazonaws.com/273001999516/sqs

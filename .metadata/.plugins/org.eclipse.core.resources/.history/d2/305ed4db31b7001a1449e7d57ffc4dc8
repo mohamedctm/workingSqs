@@ -1,0 +1,62 @@
+package com.aws.sqs.service;
+
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import com.amazonaws.services.sqs.model.Message;
+import com.amazonaws.services.sqs.model.ReceiveMessageResult;
+import com.aws.sqs.client.SqsClient;
+
+@Component
+public class ReceiveMessage implements Runnable{
+	
+	private static final Logger LOG = LoggerFactory.getLogger(ReceiveMessage.class);
+	
+	
+	private SqsClient client;
+	
+	public ReceiveMessage(SqsClient client) {
+		this.client = client;		
+	}
+	@Override
+	@Scheduled(fixedRate = 1000)
+	public void run() {
+		
+		LOG.info("Receive Message{}");
+		ReceiveMessageResult result = client.getAmazonSqsClient()
+				.receiveMessage(client.getUrl());
+	
+			LOG.info("delete message", result.getMessages().get(0).getReceiptHandle());
+			client.getAmazonSqsClient().deleteMessage(client.getUrl(),
+					result.getMessages().get(0).getReceiptHandle());
+	}
+	
+//	  public List<String> receiveSomething(String queueName){
+//	        List<String> resultMessages = new ArrayList<String>();
+//	        List<Message> messages = sqs.receiveMessage("https://sqs.ca-central-1.amazonaws.com/074339870987/" + queueName).getMessages();
+//	        while(messages!=null && !messages.isEmpty()){
+//	            messages.forEach((msg) -> {
+//	                System.out.println(msg.getBody());
+//	                resultMessages.add(msg.getBody());
+//	            });
+//
+//	            for (Message m : messages) {
+//	                sqs.deleteMessage("https://sqs.us-east-1.amazonaws.com/273001999516/sqs", m.getReceiptHandle());
+//	            }  
+//	            
+//	            messages = sqs.receiveMessage("https://sqs.us-east-1.amazonaws.com/273001999516/sqs").getMessages();
+//	        }
+//	        return resultMessages;
+//	    }
+	  
+	  
+	  
+	
+}

@@ -1,0 +1,24 @@
+server:
+  port: 9001  
+cloud:
+  aws:
+    region:
+      static: US_EAST_1
+      auto: false
+    credentials:
+      access-key: AKIAT7EBP5SOPZ7O73UK
+      secret-key: FcLbFObpG0qMLwNuX5+eJqOw8X2W++v3jVdbXnu
+    end-point:
+      uri:https: //sqs.us-east-1.amazonaws.com/273001999516/sqs 
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop-select
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://reservoir.c0vqeod3dnhi.us-east-2.rds.amazonaws.com/reservoir
+    username: postgres
+    password: wasspord
+    driverClassName: org.postgresql.Driver

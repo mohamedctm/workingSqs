@@ -1,0 +1,40 @@
+package com.aws.sqs.client;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+
+import com.amazonaws.services.sqs.AmazonSQS;
+
+import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
+
+
+@Component
+@Scope("singleton")
+public class SqsClient {
+
+	
+	@Value("${region}")
+	@Getter
+	private String region;
+	
+	@Value("${url}")
+	@Getter
+	private String url;
+	
+	@Getter
+	private AmazonSQS sqsClient;
+	
+	@PostConstruct
+	public void init() {
+		sqsClient = AmazonSQSClientBuilder.standard().withRegion(region)
+				.build();
+	}
+
+	
+	
+	
+}

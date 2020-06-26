@@ -1,0 +1,35 @@
+package com.aws.sqs.service;
+
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.amazonaws.services.sqs.model.ReceiveMessageResult;
+import com.aws.sqs.client.SqsClient;
+
+public class ReceiveMessage implements Runnable{
+	
+	private static final Logger LOG = LoggerFactory.getLogger(ReceiveMessage.class);
+
+	private SqsClient client;
+	
+	public ReceiveMessage(SqsClient client) {
+		this.client = client;
+		
+	}
+	@Override
+	public void run() {
+		ReceiveMessageResult result = client.getSqsClient()
+				.receiveMessage(client.getUrl());
+		if(null != result)
+			LOG.info("Receive Message{}", result);
+		
+		if(null != result.getMessages() && !result.getMessages()
+				.isEmpty()) {
+			LOG.info("delete message");
+			client.getSqsClient().deleteMessage(client.getUrl(),
+					result.getMessages().get(0).getReceiptHandle());
+		}
+	}
+}

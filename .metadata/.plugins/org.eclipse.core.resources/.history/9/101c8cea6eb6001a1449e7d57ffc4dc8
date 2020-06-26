@@ -1,0 +1,9 @@
+package com.example.demo.service;
+
+import com.example.demo.dto.Quote;
+
+public interface SqsService {
+    void saveQuote(Quote incomingQuote,
+                   String messageId,
+                   String approximateFirstReceiveTimestamp);
+}

@@ -1,0 +1,5 @@
+package com.aws.sqs.client;
+
+public class SqsClient {
+
+}

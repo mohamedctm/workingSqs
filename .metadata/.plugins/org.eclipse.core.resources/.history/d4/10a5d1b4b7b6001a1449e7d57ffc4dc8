@@ -1,0 +1,5 @@
+package com.aws.sqs.service;
+
+public class MessageSubscriberService {
+
+}

@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "cloud.aws.sqs.url",
+    "type": "java.lang.String",
+    "description": "A description for 'cloud.aws.sqs.url'"
+  },
+  {
+    "name": "cloud.aws.sqs.pollingThreads",
+    "type": "java.lang.String",
+    "description": "A description for 'cloud.aws.sqs.pollingThreads'"
+  },
+  {
+    "name": "cloud.aws.sqs.pollingRate",
+    "type": "java.lang.String",
+    "description": "A description for 'cloud.aws.sqs.pollingRate'"
+  }
+]}

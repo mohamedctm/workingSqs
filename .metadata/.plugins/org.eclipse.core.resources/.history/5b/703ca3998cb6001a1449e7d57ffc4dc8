@@ -1,0 +1,23 @@
+package com.example.demo;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cloud.aws.messaging.config.SimpleMessageListenerContainerFactory;
+import org.springframework.context.annotation.Bean;
+
+@SpringBootTest
+class SendRecieveSqsApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+	
+	@Bean
+	public SimpleMessageListenerContainerFactory simpleMessageListenerContainerFactory() {
+	  SimpleMessageListenerContainerFactory factory = new SimpleMessageListenerContainerFactory();
+	  factory.setAutoStartup(false);
+
+	  return factory;
+	}
+
+}

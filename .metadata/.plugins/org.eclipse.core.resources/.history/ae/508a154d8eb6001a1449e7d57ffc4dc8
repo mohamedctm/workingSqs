@@ -1,0 +1,22 @@
+server:
+  port: 8050  
+cloud:
+  aws:
+    region:
+      static: N.virgina
+    stack:
+      auto: false
+    credentials:
+      access-key: ${access-key}
+      secret-key: ${secret-key}
+    sqs:
+      url: ${url}
+    cli:
+      endpoint:
+        uri:https: https://sqs.us-east-1.amazonaws.com/273001999516/sqs-dl
+      
+      
+      #access-key: AKIAT7EBP5SOPZ7O73UK
+      #secret-key: FcLbFObpG0qMLwNuX5+eJqOw8X2W++v3jVdbXnu
+      #region : us-east-1
+      #url: https://sqs.us-east-1.amazonaws.com/273001999516/sqs

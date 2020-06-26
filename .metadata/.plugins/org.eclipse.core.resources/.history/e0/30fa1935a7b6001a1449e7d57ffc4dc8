@@ -1,0 +1,20 @@
+package com.aws.sqs.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import com.aws.sqs.client.SqsClient;
+
+@Component
+public class MessagePublisherService {
+	
+	private int  i = 0;
+	@Autowired 
+	private SqsClient client;
+	
+	@Scheduled(fixedRate = 1000)
+	private void sendMessage() {
+		SendMessageResult result = client.getSqsClient().sendMessage(client.getUrl(),"hello" + i);
+	}
+}
