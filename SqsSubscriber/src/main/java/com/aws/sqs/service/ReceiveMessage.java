@@ -36,24 +36,24 @@ public class ReceiveMessage implements Runnable {
 	}
 	
 	//start here
-	
-		AWSCredentialsProvider awsCredentialsProvider = new AWSStaticCredentialsProvider(
-		        new BasicAWSCredentials(client.getAccess_key(), client.getSecret_key())
-		);
-
-		AmazonSQS amazonSQS = AmazonSQSClientBuilder.standard().withCredentials(awsCredentialsProvider).build();
+//	
+//		AWSCredentialsProvider awsCredentialsProvider = new AWSStaticCredentialsProvider(
+//		        new BasicAWSCredentials(client.getAccess_key(), client.getSecret_key())
+//		);
+//
+//		AmazonSQS amazonSQS = AmazonSQSClientBuilder.standard().withCredentials(awsCredentialsProvider).build();
 		//end here
 		
-		final ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest(client.getUrl())
-		        .withMaxNumberOfMessages(1)
-		        .withWaitTimeSeconds(3);
-		
-		private void deleteMessage(Message messageObject) {
-
-		    final String messageReceiptHandle = messageObject.getReceiptHandle();
-		    amazonSQS.deleteMessage(new DeleteMessageRequest(client.getUrl(), messageReceiptHandle));
-
-		}
+//		final ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest(client.getUrl())
+//		        .withMaxNumberOfMessages(1)
+//		        .withWaitTimeSeconds(3);
+//		
+//		private void deleteMessage(Message messageObject) {
+//
+//		    final String messageReceiptHandle = messageObject.getReceiptHandle();
+//		    amazonSQS.deleteMessage(new DeleteMessageRequest(client.getUrl(), messageReceiptHandle));
+//
+//		}
 		
 //		 public void startListeningToMessages() {
 //
@@ -74,36 +74,21 @@ public class ReceiveMessage implements Runnable {
 //		            }
 //		        }
 //		    }
+		
 	@Override
 	@Scheduled(fixedRate = 1000)
 	public void run() {
-		final ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest(client.getUrl())
-                .withMaxNumberOfMessages(1)
-                .withWaitTimeSeconds(3);
+		ReceiveMessageResult result = client.getAmazonSqsClient()
+				.receiveMessage(client.getUrl());
+		LOG.info("start listening", result);
+		if(null == result)
+			LOG.info("Receive Message{}", result);
 		
-//		 while (true) {
-
-	            final List<Message> messages = amazonSQS.receiveMessage(receiveMessageRequest).getMessages();
-
-	            for (Message messageObject : messages) {
-	                String message = messageObject.getBody();
-
-	                LOG.info("Received message: " + message);
-
-	                deleteMessage(messageObject);
-	            }
-//	        }
-//		ReceiveMessageResult result = client.getAmazonSqsClient()
-//				.receiveMessage(client.getUrl());
-//		LOG.info("start listening", result);
-//		if(null == result)
-//			LOG.info("Receive Message{}", result);
-//		
-//		if(null != result.getMessages() && !result.getMessages()
-//				.isEmpty()) {
-//			LOG.info("delete message", result.getMessages().get(0).getReceiptHandle());
-//			client.getAmazonSqsClient().deleteMessage(client.getUrl(),
-//					result.getMessages().get(0).getReceiptHandle());
-//		}
+		if(null != result.getMessages() && !result.getMessages()
+				.isEmpty()) {
+			LOG.info("delete message", result.getMessages().get(0).getReceiptHandle());
+			client.getAmazonSqsClient().deleteMessage(client.getUrl(),
+					result.getMessages().get(0).getReceiptHandle());
+		}
 	}
 }

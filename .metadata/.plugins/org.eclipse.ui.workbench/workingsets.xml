@@ -23,4 +23,5 @@
 <item elementID="=full/target\/generated-test-sources\/test-annotations=/optional=/true=/=/maven.pomderived=/true=/=/ignore_optional_problems=/true=/=/m2e-apt=/true=/=/test=/true=/" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1593019476359_2" label="Window Working Set" name="Aggregate for window 1593019476358"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1593182849327_3" label="Window Working Set" name="Aggregate for window 1593182849327"/>
 </workingSetManager>

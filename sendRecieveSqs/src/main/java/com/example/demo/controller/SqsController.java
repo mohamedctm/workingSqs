@@ -28,17 +28,18 @@ public class SqsController {
 	public 		String message;
 	
 	@GetMapping 
-	public void sendMessage(){
+	public String sendMessage(){
 		queueMessagingTemplate.send(sqsEndPoint, MessageBuilder.withPayload(message1).build());
 		LOG.info("message sent to aws");
+		return message1+" sent to aws";
 
 	}
 	
-	@SqsListener("sqs") 
-	public void getMessage(String messagex){
-		queueMessagingTemplate.receive(message);
-		LOG.info("from aws:" + message);
-	}
+//	@SqsListener("sqs") 
+//	public void getMessage(String messagex){
+//		queueMessagingTemplate.receive(message);
+//		LOG.info("from aws:" + message);
+//	}
 
 
 }

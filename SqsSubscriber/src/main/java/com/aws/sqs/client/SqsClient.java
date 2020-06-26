@@ -16,7 +16,7 @@ import lombok.Getter;
 @Component
 @Scope("singleton")
 public class SqsClient {
-	@Value("US_EAST_1")
+	@Value("us-east-1")
 	@Getter
 	private String region;
 	

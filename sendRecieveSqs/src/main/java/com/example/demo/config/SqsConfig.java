@@ -20,10 +20,10 @@ public class SqsConfig {
 	@Value("${region}")
 	private String region;
 	
-	@Value("${access-key}")
+	@Value("AKIAT7EBP5SOJKTENNZN")
 	private String AwsAccessKey;
 	
-	@Value("${secret-key}")
+	@Value("qMK7pHLrLWF2o7C2zcFiQvHJsYwhKEMemKZe01t0")
 	private String awsSecretKey;
 	
 	@Bean

@@ -22,7 +22,7 @@ public class MessagePublisherService {
 	@Scheduled(fixedRate = 1000)
 	private void sendMessage() {
 		SendMessageResult result = client.getSqsClient().
-				sendMessage(client.getUrl(),"message sent from s-boot" + count);
+				sendMessage(client.getUrl(),"message sent from spring-boot" + count);
 		LOG.info("Published Message {}", result.getMessageId());
 		count++;
 	}
